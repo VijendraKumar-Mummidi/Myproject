@@ -1,259 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>🎉 Happy Birthday 🎂</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>🎉 Happy Birthday 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --neon1: #ff00cc;
-      --neon2: #3333ff;
-      --glass: rgba(255, 255, 255, 0.15);
-    }
+<style>
+:root {
+  --neon1: #ff00cc;
+  --neon2: #00ffff;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-    body {
-      min-height: 100vh;
-      overflow: hidden;
-      background: linear-gradient(120deg, #1d2671, #c33764);
-      animation: bgMove 10s ease infinite;
-      color: #fff;
-    }
+/* BACKGROUND */
+body {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #1d2671, #c33764);
+  background-size: 300% 300%;
+  animation: bgMove 10s ease infinite;
+  overflow: hidden;
+  color: #fff;
+}
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    /* ===== GLASS CONTAINER ===== */
-    .container {
-      position: relative;
-      z-index: 10;
-      width: 90%;
-      max-width: 420px;
-      margin: auto;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 20px;
-      border-radius: 25px;
-      background: var(--glass);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 0 40px rgba(255, 0, 200, 0.5);
-      text-align: center;
-      animation: popIn 1.2s ease;
-    }
+/* MAIN CENTER CONTAINER */
+.container {
+  position: absolute;
+  inset: 0;
+  margin: auto;
 
-    @keyframes popIn {
-      from { transform: translateY(-50%) scale(0.7); opacity: 0; }
-      to { transform: translateY(-50%) scale(1); opacity: 1; }
-    }
+  width: min(92vw, 560px);
+  padding: 26px;
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glowText 2s infinite alternate;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    @keyframes glowText {
-      from { text-shadow: 0 0 10px #ff00cc; }
-      to { text-shadow: 0 0 25px #00ffff; }
-    }
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
 
-    .name {
-      margin-top: 10px;
-      font-size: 1.6rem;
-      font-weight: 600;
-      animation: typing 3s steps(20) forwards, blink 0.7s infinite;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #fff;
-      width: 0;
-      margin-inline: auto;
-    }
+  box-shadow: 0 0 55px rgba(255, 0, 200, 0.6);
+  text-align: center;
 
-    @keyframes typing {
-      to { width: 100%; }
-    }
+  animation: popIn 1.2s ease;
+}
 
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    /* ===== IMAGE SLIDER ===== */
-    .image-box {
-      position: relative;
-      margin-top: 20px;
-      height: 260px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(0,0,0,0.6);
-    }
+/* TITLE */
+h1 {
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+}
 
-    .image-box img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transform: scale(1.2);
-      transition: opacity 0.5s ease, transform 0.6s ease, filter 0.5s;
-      filter: blur(10px);
-    }
+@keyframes glow {
+  from { text-shadow: 0 0 10px var(--neon1); }
+  to { text-shadow: 0 0 25px var(--neon2); }
+}
 
-    .image-box img.active {
-      opacity: 1;
-      transform: scale(1);
-      filter: blur(0);
-      animation: pulse 1s infinite alternate;
-    }
+/* NAME */
+.name {
+  margin-top: 10px;
+  font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  width: 0;
+  animation: typing 3s steps(20) forwards, blink 0.7s infinite;
+}
 
-    @keyframes pulse {
-      from { box-shadow: 0 0 10px var(--neon1); }
-      to { box-shadow: 0 0 25px var(--neon2); }
-    }
+@keyframes typing {
+  to { width: 100%; }
+}
 
-    /* ===== QUOTES ===== */
-    .quote {
-      margin-top: 15px;
-      font-size: 0.95rem;
-      opacity: 0.9;
-      animation: fadeQuote 4s infinite;
-    }
+@keyframes blink {
+  50% { border-color: transparent; }
+}
 
-    @keyframes fadeQuote {
-      0%,100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
+/* IMAGE FRAME (180% SIZE) */
+.image-box {
+  margin-top: 24px;
+  position: relative;
 
-    /* ===== BALLOONS ===== */
-    .balloon {
-      position: absolute;
-      bottom: -100px;
-      width: 40px;
-      height: 60px;
-      border-radius: 50%;
-      animation: floatUp 8s linear infinite;
-      opacity: 0.7;
-    }
+  width: clamp(320px, 85vw, 720px);
+  height: clamp(260px, 55vw, 520px);
 
-    @keyframes floatUp {
-      to { transform: translateY(-120vh); }
-    }
+  border-radius: 28px;
+  overflow: hidden;
 
-    /* ===== CONFETTI ===== */
-    .confetti {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background: hsl(var(--hue), 100%, 50%);
-      top: -10px;
-      animation: confettiFall 3s linear forwards;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    @keyframes confettiFall {
-      to { transform: translateY(110vh) rotate(720deg); }
-    }
+  box-shadow: 0 0 45px rgba(0,0,0,0.7);
+}
 
-    /* ===== MUSIC BUTTON ===== */
-    .music-btn {
-      margin-top: 15px;
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: none;
-      background: linear-gradient(90deg, #ff00cc, #3333ff);
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
-  </style>
+/* IMAGES */
+.image-box img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transform: scale(1.25);
+  filter: blur(12px);
+
+  transition: opacity 0.45s ease,
+              transform 0.6s ease,
+              filter 0.45s ease;
+}
+
+.image-box img.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 15px var(--neon1); }
+  to { box-shadow: 0 0 30px var(--neon2); }
+}
+
+/* QUOTE */
+.quote {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  animation: fadeQuote 4s infinite;
+}
+
+@keyframes fadeQuote {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* BALLOONS */
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  width: 40px;
+  height: 60px;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-130vh); }
+}
+
+/* CONFETTI */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  top: -10px;
+  animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+  to { transform: translateY(120vh) rotate(720deg); }
+}
+
+/* MUSIC BUTTON */
+.music-btn {
+  margin-top: 18px;
+  padding: 10px 20px;
+  border-radius: 22px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+</style>
 </head>
 
 <body>
 
-  <!-- 🎉 MAIN CONTENT -->
-  <div class="container">
-    <h1>🎉 Happy Birthday 🎂</h1>
+<div class="container">
+  <h1>🎉 Happy Birthday 🎂</h1>
+  <div class="name">Amazing Soul 💖</div>
 
-    <!-- ✨ CHANGE NAME HERE -->
-    <div class="name">Amazing Soul 💖</div>
-
-    <!-- 🖼️ IMAGE SLIDER -->
-    <div class="image-box">
-      <!-- 🔁 REPLACE IMAGE URLS HERE -->
-      <img src="https://picsum.photos/id/1011/600/400" class="active">
-      <img src="https://picsum.photos/id/1015/600/400">
-      <img src="https://picsum.photos/id/1025/600/400">
-      <img src="https://picsum.photos/id/1035/600/400">
-      <img src="https://picsum.photos/id/1041/600/400">
-      <img src="https://picsum.photos/id/1050/600/400">
-      <img src="https://picsum.photos/id/1062/600/400">
-      <img src="https://picsum.photos/id/1074/600/400">
-      <img src="https://picsum.photos/id/1084/600/400">
-      <img src="https://picsum.photos/id/109/600/400">
-    </div>
-
-    <div class="quote">✨ May your day be filled with magic, smiles & love ✨</div>
-
-    <button class="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
+  <div class="image-box">
+    <!-- 🔁 REPLACE THESE IMAGES -->
+    <img src="https://picsum.photos/id/1011/900/700" class="active">
+    <img src="https://picsum.photos/id/1015/900/700">
+    <img src="https://picsum.photos/id/1025/900/700">
+    <img src="https://picsum.photos/id/1035/900/700">
+    <img src="https://picsum.photos/id/1041/900/700">
+    <img src="https://picsum.photos/id/1050/900/700">
+    <img src="https://picsum.photos/id/1062/900/700">
+    <img src="https://picsum.photos/id/1074/900/700">
+    <img src="https://picsum.photos/id/1084/900/700">
+    <img src="https://picsum.photos/id/109/900/700">
   </div>
 
-  <!-- 🎵 BACKGROUND MUSIC -->
-  <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-  </audio>
+  <div class="quote">✨ May your life glow brighter every year ✨</div>
+  <button class="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
+</div>
 
-  <script>
-    /* ===== IMAGE SEQUENCE ===== */
-    const images = document.querySelectorAll(".image-box img");
-    let index = 0;
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
 
-    setInterval(() => {
-      images[index].classList.remove("active");
-      index = (index + 1) % images.length;
-      images[index].classList.add("active");
-    }, 450); // ultra-fast legendary speed ⚡
+<script>
+/* IMAGE SLIDER */
+const images = document.querySelectorAll(".image-box img");
+let index = 0;
 
-    /* ===== CONFETTI ===== */
-    for (let i = 0; i < 120; i++) {
-      const confetti = document.createElement("div");
-      confetti.className = "confetti";
-      confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.animationDelay = Math.random() * 3 + "s";
-      confetti.style.setProperty("--hue", Math.random() * 360);
-      document.body.appendChild(confetti);
-    }
+setInterval(() => {
+  images[index].classList.remove("active");
+  index = (index + 1) % images.length;
+  images[index].classList.add("active");
+}, 450);
 
-    /* ===== BALLOONS ===== */
-    for (let i = 0; i < 12; i++) {
-      const balloon = document.createElement("div");
-      balloon.className = "balloon";
-      balloon.style.left = Math.random() * 100 + "vw";
-      balloon.style.background = `hsl(${Math.random()*360},100%,60%)`;
-      balloon.style.animationDuration = 6 + Math.random()*4 + "s";
-      document.body.appendChild(balloon);
-    }
+/* CONFETTI */
+for (let i = 0; i < 120; i++) {
+  const c = document.createElement("div");
+  c.className = "confetti";
+  c.style.left = Math.random() * 100 + "vw";
+  c.style.background = `hsl(${Math.random()*360},100%,50%)`;
+  c.style.animationDelay = Math.random() * 3 + "s";
+  document.body.appendChild(c);
+}
 
-    /* ===== MUSIC ===== */
-    const music = document.getElementById("bgMusic");
-    function toggleMusic() {
-      if (music.paused) music.play();
-      else music.pause();
-    }
-  </script>
+/* BALLOONS */
+for (let i = 0; i < 12; i++) {
+  const b = document.createElement("div");
+  b.className = "balloon";
+  b.style.left = Math.random() * 100 + "vw";
+  b.style.background = `hsl(${Math.random()*360},100%,60%)`;
+  b.style.animationDuration = 6 + Math.random() * 4 + "s";
+  document.body.appendChild(b);
+}
+
+/* MUSIC */
+const music = document.getElementById("bgMusic");
+function toggleMusic() {
+  music.paused ? music.play() : music.pause();
+}
+</script>
 
 </body>
 </html>
