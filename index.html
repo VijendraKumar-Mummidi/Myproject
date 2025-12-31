@@ -212,7 +212,7 @@ h1 {
   <div class="name">Amazing Soul 💖</div>
 
   <div class="image-box">
-    <!-- 🔁 REPLACE THESE IMAGES -->
+    <!-- 🔁 REPLACE WITH YOUR IMAGES -->
     <img src="https://picsum.photos/id/1011/900/700" class="active">
     <img src="https://picsum.photos/id/1015/900/700">
     <img src="https://picsum.photos/id/1025/900/700">
@@ -229,8 +229,9 @@ h1 {
   <button class="music-btn" onclick="toggleMusic()">🎶 Play Music</button>
 </div>
 
+<!-- 🎵 HAPPY BIRTHDAY MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7c8b7f8b5d.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -266,6 +267,8 @@ for (let i = 0; i < 12; i++) {
 
 /* MUSIC */
 const music = document.getElementById("bgMusic");
+music.volume = 0.5;
+
 function toggleMusic() {
   music.paused ? music.play() : music.pause();
 }
