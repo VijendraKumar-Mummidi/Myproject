@@ -213,16 +213,16 @@ h1 {
 
   <div class="image-box">
     <!-- 🔁 REPLACE WITH YOUR IMAGES -->
-    <img src="https://picsum.photos/id/1011/900/700" class="active">
-    <img src="https://picsum.photos/id/1015/900/700">
-    <img src="https://picsum.photos/id/1025/900/700">
-    <img src="https://picsum.photos/id/1035/900/700">
-    <img src="https://picsum.photos/id/1041/900/700">
-    <img src="https://picsum.photos/id/1050/900/700">
-    <img src="https://picsum.photos/id/1062/900/700">
-    <img src="https://picsum.photos/id/1074/900/700">
-    <img src="https://picsum.photos/id/1084/900/700">
-    <img src="https://picsum.photos/id/109/900/700">
+    <img src="sindhu1.jpg" class="active">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
+    <img src="sindhu1.jpg">
   </div>
 
   <div class="quote">✨ May your life glow brighter every year ✨</div>
@@ -230,9 +230,12 @@ h1 {
 </div>
 
 <!-- 🎵 HAPPY BIRTHDAY MUSIC -->
-<audio id="bgMusic" loop>
+<!-- 🎵 HAPPY BIRTHDAY MUSIC -->
+<audio id="bgMusic" loop preload="auto">
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7c8b7f8b5d.mp3" type="audio/mpeg">
+  Your browser does not support audio.
 </audio>
+
 
 <script>
 /* IMAGE SLIDER */
@@ -266,12 +269,42 @@ for (let i = 0; i < 12; i++) {
 }
 
 /* MUSIC */
+<script>
 const music = document.getElementById("bgMusic");
 music.volume = 0.5;
 
-function toggleMusic() {
-  music.paused ? music.play() : music.pause();
+let musicStarted = false;
+
+// Play music on first click anywhere
+document.body.addEventListener("click", () => {
+  if (!musicStarted) {
+    music.play().catch(() => {});
+    musicStarted = true;
+  }
+});
+
+// Smooth fade-in effect
+function fadeInMusic() {
+  let vol = 0;
+  music.volume = 0;
+  music.play();
+  const fade = setInterval(() => {
+    vol += 0.02;
+    music.volume = Math.min(vol, 0.5);
+    if (vol >= 0.5) clearInterval(fade);
+  }, 120);
 }
+
+// Button toggle (your existing button)
+function toggleMusic() {
+  if (music.paused) {
+    fadeInMusic();
+  } else {
+    music.pause();
+  }
+}
+</script>
+
 </script>
 
 </body>
